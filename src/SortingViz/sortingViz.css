@@ -1,0 +1,17 @@
+.array-container {
+    margin-top: 3.5%;
+    position: absolute;
+    left: 100px;
+    
+}
+
+
+
+.array-bar {
+    width: 0.2vw;
+    background-color: pink;
+    display: inline-block;
+    margin: 0 0.15vw;
+
+}
+
