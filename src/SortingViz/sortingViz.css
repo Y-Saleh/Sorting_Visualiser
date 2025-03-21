@@ -1,7 +1,30 @@
+@import "https://unpkg.com/open-props/easings.min.css"; 
+
+html {
+    color-scheme: dark light;
+    block-size: 100%;
+  }
+  
+  
+  button {
+    padding: 0.5rem 1rem;
+    background: #e37;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
 .array-container {
     margin-top: 3.5%;
     position: absolute;
-    left: 100px;
+    margin-left: 10vw;
     
 }
 
@@ -14,4 +37,42 @@
     margin: 0 0.15vw;
 
 }
+
+
+.gen-button{
+    margin: auto;
+    padding: 25px;
+
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    padding-top: 50vh;
+    
+    
+   
+}
+
+
+
+
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+    .button-container{
+      flex-direction: column;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
 
