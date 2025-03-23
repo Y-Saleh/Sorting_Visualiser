@@ -62,7 +62,13 @@ html {
 @media (max-width: 800px) {
     .button-container{
       flex-direction: column;
+      
     }
+    .gen-button{
+      margin: auto;
+      margin-top: 25px;
+  
+  }
   }
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import './sortingViz.css';
+import { Slider } from '@mui/material';
 
 const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
@@ -10,10 +11,15 @@ export default class SortingViz extends React.Component {
     this.state = {
       array: [],
       active: false,
-      sorted: false
+      sorted: false,
+      sliderVal: 10
+      
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  
   componentDidMount() {
     this.resetArray();
   }
@@ -31,15 +37,17 @@ export default class SortingViz extends React.Component {
   animateSorting(animations) {
     this.setState({active: true});
     for (let i = 0; i < animations.length; i++) {
+      
       setTimeout(() => {
+        
         this.setState({ array: animations[i].array });
         const bar = document.querySelectorAll('.array-bar')[animations[i].index];
         if (bar) bar.style.backgroundColor = SECONDARY_COLOR;
         
         
-      }, i * 10);
+      }, i * this.state.sliderVal);
     }
-
+    
     setTimeout(() => {
       document.querySelectorAll('.array-bar').forEach((bar) => {
         bar.style.backgroundColor = PRIMARY_COLOR;
@@ -48,12 +56,7 @@ export default class SortingViz extends React.Component {
           sorted: true
         });
       });
-    }, animations.length * 10);
-
-    
-
-    
-
+    }, animations.length * this.state.sliderVal);
 
   }
 
@@ -185,8 +188,16 @@ export default class SortingViz extends React.Component {
     }
   }
 
+  handleChange(event, newValue){
+    this.setState({ sliderVal: newValue });
+
+  }
+
+
   render() {
     const { array } = this.state;
+
+    
 
     return (
       <div>
@@ -200,6 +211,27 @@ export default class SortingViz extends React.Component {
               }}>
             </div>
           ))}
+        
+
+          <div className='slider-cont'>
+
+            <Slider
+              
+              onChange={this.handleChange}
+              defaultValue={10}
+              value={this.state.sliderVal}
+              valueLabelDisplay="auto"
+              shiftStep={30}
+              step={5}
+              marks
+              min={0}
+              max={100}
+            />
+            
+            <p>Fast to Slow - Animation speed</p>
+
+          </div>
+
         </div>
 
         <div className='button-container'>
